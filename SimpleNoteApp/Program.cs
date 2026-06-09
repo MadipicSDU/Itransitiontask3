@@ -1,3 +1,5 @@
+using System.Numerics;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -20,20 +22,20 @@ app.Use(async(context, next) =>
 });
 app.MapGet("/madizhassymbek_gmail_com", (string? x, string? y) =>
 {
-    if(!long .TryParse(x, out var a ) || a < 1
-    || !long .TryParse(y, out var b) || b < 1)
+    if(!BigInteger .TryParse(x, out var a ) || a < 1
+    || !BigInteger .TryParse(y, out var b) || b < 1)
     {
         return Results.Text("NaN", "text/plain");
     }
 
-    long gcd = Gcd(a,b);
-    long lcm = checked(a / gcd * b);
+    BigInteger gcd = Gcd(a,b);
+    BigInteger lcm = checked(a / gcd * b);
     return Results.Text(lcm.ToString(),"text/plain");
 });
 
 app.Run();
 
-long Gcd(long a, long b)
+BigInteger Gcd(BigInteger a, BigInteger b)
 {
     while (b != 0)
     {
