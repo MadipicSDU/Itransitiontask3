@@ -18,4 +18,4 @@ COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:10000
 EXPOSE 10000
 
-ENTRYPOINT ["dotnet", "SimpleNoteAPP.dll"]
+ENTRYPOINT ["dotnet", "SimpleNoteApp.dll"]
