@@ -16,8 +16,8 @@ if(app.Environment.IsDevelopment())
 
 app.MapGet("/madizhassymbek_gmail_com", (string? x, string? y) =>
 {
-    if(!long .TryParse(x, out var a)
-    || !long .TryParse(y, out var b) || a*b <1)
+    if(!long .TryParse(x, out var a ) || a < 1
+    || !long .TryParse(y, out var b) || b < 1)
     {
         return Results.Text("NaN", "text/plain");
     }
