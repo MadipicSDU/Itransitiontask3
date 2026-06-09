@@ -13,7 +13,11 @@ if(app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.Use(async(context, next) =>
+{
+    Console.WriteLine($"[{DateTime.UtcNow}] {context.Request.Method} {context.Request.Path}{context.Request.QueryString}");
+    await next();
+});
 app.MapGet("/madizhassymbek_gmail_com", (string? x, string? y) =>
 {
     if(!long .TryParse(x, out var a ) || a < 1
